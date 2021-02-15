@@ -1,16 +1,42 @@
-# MovieGenre.destroy_all
-# Rental.destroy_all
-# Vhs.destroy_all
-Client.destroy_all
-# Genre.destroy_all
-# Movie.destroy_all
-# MovieGenre.reset_pk_sequence
-# Rental.reset_pk_sequence
-# Vhs.reset_pk_sequence
-Client.reset_pk_sequence
-# Genre.reset_pk_sequence
-# Movie.reset_pk_sequence
+# the `seed`s have been commented out -- uncomment it once you've built out your migrations and associations.
 
+Movie.destroy_all
+Movie.reset_pk_sequence
+Client.destroy_all
+Client.reset_pk_sequence
+Genre.destroy_all
+Genre.reset_pk_sequence
+Vhs.destroy_all
+Vhs.reset_pk_sequence
+# Rental.destroy_all
+# Rental.reset_pk_sequence
+# MovieGenre.destroy_all
+# MovieGenre.reset_pk_sequence
+
+#clients
+client1 = Client.create(name: "client1", home_address: "1 main st")
+client2 = Client.create(name: "client2", home_address: "2 pine st")
+client3 = Client.create(name: "client3", home_address: "3 maple st")
+client4 = Client.create(name: "client4", home_address: "4 cedar st")
+client5 = Client.create(name: "client5", home_address: "5 elm st")
+
+#genres
+drama = Genre.create(name: "drama")
+comedy = Genre.create(name: "comedy")
+romance = Genre.create(name: "romance")
+thriller = Genre.create(name: "thriller")
+action = Genre.create(name: "action")
+
+#movies
+troy = Movie.create(title: "troy", year: 2000, length: 2, director: "troy dir", description: "cool film", female_director: false)
+braveheart = Movie.create(title: "braveheart", year: 1995, length: 3, director: "braveheart dir", description: "historical film", female_director: true)
+patriot = Movie.create(title: "patriot", year: 1997, length: 3, director: "patriot dir", description: "american history film", female_director: false)
+gladiator = Movie.create(title: "gladiator", year: 1999, length: 3, director: "gladiator dir", description: "roman history film", female_director: true)
+
+#vhs
+# vhs1 = Vhs.create(movie_id: troy.id, serial_number: "1234")
+# vhs2 = Vhs.create(movie_id: braveheart.id, serial_number: "1234")
+# vhs3 = Vhs.create(movie_id: patriot.id, serial_number: "1234")
 
 def create_movie_joins(movie, genre_array)
     genre_array.each{|genre| MovieGenre.create(movie_id: movie.id, genre_id: genre.id)}
